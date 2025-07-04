@@ -10,26 +10,6 @@ function getComputerChoice() {
     }
 }
 
-function getHumanChoice() {
-    let choice = prompt("Enter your choice");
-
-    if (choice === null) {
-        return "invalid input!";
-    }
-
-    choice = choice.toLowerCase();
-
-    if (choice === "rock") {
-        return "Rock";
-    } else if (choice === "paper") {
-        return "Paper";
-    } else if (choice === "scissors") {
-        return "Scissors";
-    } else {
-        return "invalid input!";
-    }
-}
-
 let humanScore = 0;
 let computerScore = 0;
 
@@ -39,7 +19,7 @@ function playRound(humanChoice, computerChoice) {
     computerChoice = computerChoice.toLowerCase();
 
     if (humanChoice === computerChoice) {
-        console.log("It's a draw! Both chose " + humanChoice);
+        resultsDiv.textContent = `It's a draw! Both chose ${humanChoice}`;
     }
 
     else if (
@@ -47,7 +27,7 @@ function playRound(humanChoice, computerChoice) {
         (humanChoice === "paper" && computerChoice === "scissors") ||
         (humanChoice === "scissors" && computerChoice === "rock")
     ) {
-        console.log(`You lose! ${computerChoice} beats ${humanChoice}`);
+        resultsDiv.textContent = `You lose! ${humanChoice} beats ${computerChoice}`;
         computerScore++;
     }
 
@@ -56,7 +36,7 @@ function playRound(humanChoice, computerChoice) {
         (humanChoice === "paper" && computerChoice === "rock") ||
         (humanChoice === "scissors" && computerChoice === "paper")
     ) {
-        console.log(`You win! ${humanChoice} beats ${computerChoice}`);
+        resultsDiv.textContent = `You win! ${humanChoice} beats ${computerChoice}`;
         humanScore++;
     }
 
@@ -64,13 +44,23 @@ function playRound(humanChoice, computerChoice) {
         console.log("Invalid input!");
     }
 }
-function playGame() {
-    for (let i = 0; i < 5; i++) {
-        const humanSelection = getHumanChoice();
-        const computerSelection = getComputerChoice();
-        playRound(humanSelection, computerSelection);
-    }
-    console.log(`Final Scores: Human - ${humanScore}, Computer - ${computerScore}`);
 
-}
-playGame();
+const rockBtn = document.getElementById('Rock');
+const paperBtn = document.getElementById('Paper');
+const scissorsBtn = document.getElementById('Scissors');
+const resultsDiv = document.getElementById('results');
+
+rockBtn.addEventListener('click', () => {
+    const computerChoice = getComputerChoice();
+    playRound('Rock', computerChoice);
+});
+
+paperBtn.addEventListener('click', () => {
+    const computerChoice = getComputerChoice();
+    playRound('Paper', computerChoice);
+});
+
+scissorsBtn.addEventListener('click', () => {
+    const computerChoice = getComputerChoice();
+    playRound('Scissors', computerChoice);
+});

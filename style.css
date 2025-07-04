@@ -1,0 +1,37 @@
+* {
+    background-color: floralwhite
+}
+
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 35px;
+    height: 30px;
+    width: auto;
+}
+
+#Rock {
+    background-color: black;
+    color: whitesmoke;
+    border-radius: 50px 100px;
+}
+
+#Paper {
+    background-color: black;
+    color: whitesmoke;
+    border-radius: 50px;
+}
+
+#Scissors {
+    background-color: black;
+    color: whitesmoke;
+    border-radius: 100px 50px;
+
+}
+
+#results {
+    display: flex;
+    justify-content: center;
+    color: slategrey;
+    font-size: 25px;
+}
